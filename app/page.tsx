@@ -38,7 +38,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Docs <span>-&gt;</span>
+            Documentation <span>-&gt;</span>
           </h2>
           <p>Review documentation for Amplify's code-first DX (Gen 2).</p>
         </a>
