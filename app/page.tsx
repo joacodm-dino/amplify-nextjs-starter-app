@@ -1,3 +1,4 @@
+/* @jsxImportSource client */
 import Image from 'next/image';
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
@@ -6,7 +7,7 @@ export default function Home() {
   const [serverResponse, setServerResponse] = useState<string | null>(null);
 
   useEffect(() => {
-    const apiUrl = 'http://3.84.21.18:80/'; // Deja la URL como está si no tienes una ruta específica
+    const apiUrl = 'http://3.84.21.18:80/'; // Reemplaza '/api/endpoint' con la ruta de tu endpoint en el servidor
 
     fetch(apiUrl)
       .then(response => response.text())
