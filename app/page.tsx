@@ -1,13 +1,11 @@
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
-import dynamic from 'next/dynamic';
-
-const DynamicReact = dynamic(() => import('react'), { ssr: false });
 
 export default function Home() {
-  const [serverResponse, setServerResponse] = DynamicReact.useState<string | null>(null);
+  const [serverResponse, setServerResponse] = useState<string | null>(null);
 
-  DynamicReact.useEffect(() => {
+  useEffect(() => {
     const apiUrl = 'http://3.84.21.18:80/';
 
     fetch(apiUrl)
