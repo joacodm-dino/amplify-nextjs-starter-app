@@ -1,3 +1,4 @@
+// Importa React y otras dependencias directamente de 'react' en lugar de importarlas de manera dinámica
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
