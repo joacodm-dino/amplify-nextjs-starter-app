@@ -1,13 +1,14 @@
-/* @jsxImportSource client */
 import Image from 'next/image';
 import styles from './page.module.css';
-import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const DynamicReact = dynamic(() => import('react'), { ssr: false });
 
 export default function Home() {
-  const [serverResponse, setServerResponse] = useState<string | null>(null);
+  const [serverResponse, setServerResponse] = DynamicReact.useState<string | null>(null);
 
-  useEffect(() => {
-    const apiUrl = 'http://3.84.21.18:80/'; // Reemplaza '/api/endpoint' con la ruta de tu endpoint en el servidor
+  DynamicReact.useEffect(() => {
+    const apiUrl = 'http://3.84.21.18:80/';
 
     fetch(apiUrl)
       .then(response => response.text())
