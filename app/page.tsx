@@ -3,10 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
 
-// @ts-ignore
-// Indica a Next.js que este componente debe ser tratado como del lado del cliente
-export const __NEXTJS_SSG_SUPPORT__ = true;
-
 export default function Home() {
   const [serverResponse, setServerResponse] = useState<string | null>(null);
 
