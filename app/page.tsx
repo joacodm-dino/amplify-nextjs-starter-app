@@ -9,7 +9,7 @@ export default function Home() {
   useEffect(() => {
     const apiUrl = 'http://54.164.180.8';
 
-    fetch(apiUrl)
+    fetch(apiUrl, {mode: 'no-cors'})
       .then(response => response.text())
       .then(data => setServerResponse(data))
       .catch(error => console.error('Error fetching data:', error));
