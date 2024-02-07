@@ -7,7 +7,7 @@ export default function Home() {
   const [serverResponse, setServerResponse] = useState<string | null>(null);
 
   useEffect(() => {
-    const apiUrl = 'http://54.164.180.8:8080/api';
+    const apiUrl = 'http://54.164.180.8';
 
     fetch(apiUrl)
       .then(response => response.text())
