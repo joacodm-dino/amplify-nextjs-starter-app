@@ -1,3 +1,5 @@
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+
 
 type ApiResponse = {
   // ajusta el tipo de datos según la respuesta real de tu servidor
