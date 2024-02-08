@@ -1,28 +1,46 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import styles from './page.module.css';
 
-export default function Home() {
-  const [serverResponse, setServerResponse] = useState<string | null>(null);
+type ApiResponse = {
+  // ajusta el tipo de datos según la respuesta real de tu servidor
+  message: string;
+};
 
-  useEffect(() => {
-    const apiUrl = 'http://54.164.180.8';
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    // Realizar la solicitud fetch al servidor
+    const apiUrl = 'http://3.84.21.18:80/';
+    const res = await fetch(apiUrl);
+    const data: ApiResponse = await res.json();
 
-    fetch(apiUrl, {mode: 'no-cors'})
-      .then(response => response.text())
-      .then(data => setServerResponse(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+    // Retornar los datos como props
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    // Manejar errores y retornar un objeto de props vacío o un objeto de error
+    return {
+      props: {
+        error: 'Error fetching data',
+      },
+    };
+  }
+};
 
+function Page({
+  data,
+  error,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <main className={styles.main}>
-      {/* ... (resto de tu código) */}
-
-      <div>
-        <h2>Respuesta del servidor EC2:</h2>
-        {serverResponse && <p>{serverResponse}</p>}
-      </div>
+    <main>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <p>Server Response: {data.message}</p>
+      )}
     </main>
   );
 }
+
+export default Page;
